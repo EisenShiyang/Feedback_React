@@ -1,7 +1,7 @@
 const express = require('express')
-const morgan = require('morgan')
+const morgan = require('morgan') // Log 相關的
 const bodyParser = require('body-parser')
-const cors = require('cors')
+const cors = require('cors') // Cross-Origin Resource Sharing
 require('dotenv').config()
 
 // import router
@@ -11,9 +11,9 @@ const feedbackRoutes = require('./routes/feedback')
 const app = express()
 
 // middleware
-app.use(morgan('dev'));
+app.use(morgan('dev')); 
 app.use(bodyParser.json());
-app.unsubscribe(cors());
+app.use(cors());
 
 // route
 app.use('/api', feedbackRoutes)
