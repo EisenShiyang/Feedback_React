@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // route
-app.use('/api', feedbackRoutes)
+app.use('/api', feedbackRoutes);
 
 // port used to listen the app
 const port = process.env.PORT || 3002

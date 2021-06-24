@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 const Feedback = () => {
 
@@ -28,8 +29,17 @@ const Feedback = () => {
     const handleSubmit = event =>{
         event.preventDefault();
         setValues({...values, buttonText: '... Sending'});
-        // Send an email to the admin
-        console.table({name, email, phone, message, uploadFiles});
+        // Send an email to the admin (Backend)
+        // console.table({name, email, phone, message, uploadFiles});
+        axios({
+            method: 'POST',
+            url: `${REACT_APP_API}/feedback`,
+            data: {name, email, phone, message, uploadFiles}
+        }).then(response => {
+            console.log('feedback submit response', response)
+        }).catch(error => {
+            console.log('feedback submit error', error.response)
+        });
     };
 
     const uploadWidget = () => {
